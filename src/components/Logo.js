@@ -3,7 +3,7 @@ import React from 'react';
 function logo() {
     return (
         <img 
-          src="/images/logo.jpg" 
+          src="${process.env.PUBLIC_URL}/images/logo.jpg" 
           alt="Logo" 
           className="img-fluid" 
           style={{ maxWidth: '100%', height: 'auto' }} 

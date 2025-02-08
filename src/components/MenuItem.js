@@ -43,7 +43,7 @@ function AddButton() {
 function MenuImage({ img }) {
     return (
         <img 
-            src={`../images/${img}`} 
+            src={`/images/${img}`} 
             alt={img} 
             className="card-img-top ml-3"  
             style={{ 

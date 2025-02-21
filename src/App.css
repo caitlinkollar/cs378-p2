@@ -36,3 +36,35 @@
   white-space: normal;
   text-align: left;
 }
+
+.cart-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border-top: 2px solid #ddd;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: center;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.cart-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+}
+
+.subtotal-text {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.cart-buttons {
+  display: flex;
+  gap: 10px;
+}
+

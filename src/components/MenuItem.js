@@ -1,80 +1,40 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-// This is a functional component that represents a single menu item. It currently takes in the title and displays it in an h2 element.
-// Modify the component to take in all the other properties of a menu item you need and display them in the component.
-// Use bootstrap to style the elements so that it looks like the mockup in the assignment.
-// Hint: You can use the image name to get the image from the images folder.
-
-function MenuItemName({ title }) {
-    return (
-        <h2 className="menu-item-name">
-            {title}
-        </h2>
-    );
-}
-
-function MenuDescription({ description }) {
-    return (
-        <h2 className="menu-description">
-            {description}
-        </h2>
-    );
-}
-
-
-function MenuPrice({price}) {
-    return (
-        <h2 className="menu-price">
-            {price}
-        </h2>
-    );
-}
-
-function AddButton() {
-    return (
-        <button style={{ backgroundColor: "rgb(248, 126, 195)", color: "rgb(225,255,255)", borderRadius: "4px", border: "none" }}>
-            ADD
-        </button>
-    );
-}
-
-function MenuImage({ img }) {
-    return (
-        <img 
-            src={`${process.env.PUBLIC_URL}/images/${img}`} 
-            alt={img} 
-            className="card-img-top ml-3"  
-            style={{ 
-                width: "100%", 
-                aspectRatio: "1 / 1", 
-                objectFit: "cover", 
-                borderRadius: "8px" 
-            }} 
-        />
-    );
-}
-
-const MenuItem = ({ title, description, price, img }) => {
+function MenuItem({ item, quantity, updateCart }) {
     return (
         <div className="container">
             <div className="row mb-4">
-                <div className="col">
-                    <MenuImage img={img} />
+                <div className="col-4">
+                    <img 
+                        src={`${process.env.PUBLIC_URL}/images/${item.imageName}`} 
+                        alt={item.title} 
+                        className="img-fluid rounded"
+                        style={{ objectFit: "cover", aspectRatio: "1 / 1" }} 
+                    />
                 </div>
-                <div className="col">
-                    <MenuItemName title={title} />
-                    <MenuDescription description={description} />
+                <div className="col-8 d-flex flex-column justify-content-center">
+                    <h2 className="menu-item-name">{item.title}</h2>
+                    <p className="menu-description">{item.description}</p>
                     <div className="d-flex justify-content-between align-items-center">
-                        <MenuPrice price={price} />
-                        <AddButton />
+                        <h3 className="menu-price">${item.price.toFixed(2)}</h3>
+                        <div className="d-flex align-items-center">
+                            <button 
+                                className="btn btn-danger btn-sm" 
+                                onClick={() => updateCart(item, -1)}
+                                disabled={quantity === 0}
+                            >−</button>
+                            <span className="mx-2">{quantity}</span>
+                            <button 
+                                className="btn btn-primary btn-sm" 
+                                onClick={() => updateCart(item, 1)}
+                            >+</button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     );
-};
+}
 
 export default MenuItem;
-
